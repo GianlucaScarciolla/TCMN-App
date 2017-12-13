@@ -34,9 +34,6 @@ $ ionic start tcmn https://github.com/GianlucaScarciolla/TCMN/tree/master/CLIENT
 $ cd tcmn
 $ ionic serve
 ```
-### Server
-
-Put all files from [SERVER](https://github.com/GianlucaScarciolla/TCMN/tree/master/SERVER) into your web server root path and start the server.
 
 ## Todo
 * a lot
