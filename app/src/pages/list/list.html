@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let team of teams">
+      <h2>{{team.id}}</h2>
+      <h2>{{team.Name}}</h2>
+      <p>{{team.test}}</p>
+      <p>{{team.lol}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
