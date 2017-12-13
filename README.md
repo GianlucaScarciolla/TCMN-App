@@ -4,7 +4,7 @@ Version: _0.0.1_
 
 
 ## TCMN Server
-You can find the Server side of this project [here](https://github.com/gianlucascarciolla).
+You can find the Server side of this project [here](https://github.com/GianlucaScarciolla/TCMN-Server).
 
 ## Technologies used
 
