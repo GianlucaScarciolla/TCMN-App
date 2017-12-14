@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Teams</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+
+  <ion-card *ngFor="let team of teams">
+    <img src={{team.timg}} />
+    <div class="card-title">{{team.TName}}</div>
+    <div class="card-subtitle">{{team.Country}}</div>
+  </ion-card>
+</ion-content>

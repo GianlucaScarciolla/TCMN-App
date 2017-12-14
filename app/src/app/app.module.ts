@@ -4,6 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ProfilPage } from '../pages/profil/profil';
+import { MeetsPage } from '../pages/meets/meets';
+import { MyteamPage } from '../pages/myteam/myteam';
+import { NewsPage } from '../pages/news/news';
+import { TeamsPage } from '../pages/teams/teams';
 import { ListPage } from '../pages/list/list';
 import { RegisterPage } from '../pages/register/register';
 
@@ -20,6 +25,11 @@ import { RestProvider } from '../providers/rest/rest';
     HomePage,
     ListPage,
     RegisterPage,
+    MeetsPage,
+    ProfilPage,
+    NewsPage,
+    TeamsPage,
+    MyteamPage,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +42,11 @@ import { RestProvider } from '../providers/rest/rest';
     HomePage,
     ListPage,
     RegisterPage,
+    MeetsPage,
+    ProfilPage,
+    NewsPage,
+    TeamsPage,
+    MyteamPage,
   ],
   providers: [
     StatusBar,
