@@ -22,6 +22,7 @@ export class TeamsPage {
     this.getTeams();
   }
 
+  // test = '&filter=Country,eq,Schweiz';
   getTeams() {
     this.restProvider.getTeams()
       .then(data => {

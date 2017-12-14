@@ -11,12 +11,14 @@ import { NewsPage } from '../pages/news/news';
 import { TeamsPage } from '../pages/teams/teams';
 import { ListPage } from '../pages/list/list';
 import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 // import { HTTP } from '@ionic-native/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 
 @NgModule({
@@ -24,12 +26,13 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     ListPage,
-    RegisterPage,
     MeetsPage,
     ProfilPage,
     NewsPage,
     TeamsPage,
     MyteamPage,
+    RegisterPage,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
+    AuthServiceProvider,
   ]
 })
 export class AppModule {}

@@ -1,8 +1,18 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Teams</ion-title>
   </ion-navbar>
+  <ion-item>
+    <ion-label>Country</ion-label>
+    <ion-select [(ngModel)]="country">
+      <ion-option value='All'>All</ion-option>
+      <ion-option *ngFor="let team of teams" value={{team.Country}}>{{team.Country}}</ion-option>
+    </ion-select>
+  </ion-item>
 
 </ion-header>
 

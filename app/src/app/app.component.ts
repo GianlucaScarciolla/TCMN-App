@@ -1,16 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, App, LoadingController, ToastController  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { RegisterPage } from '../pages/register/register';
 import { ProfilPage } from '../pages/profil/profil';
 import { MeetsPage } from '../pages/meets/meets';
 import { MyteamPage } from '../pages/myteam/myteam';
 import { NewsPage } from '../pages/news/news';
 import { TeamsPage } from '../pages/teams/teams';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,15 +22,22 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
+  loading: any;
+  isLoggedIn: boolean = false;
+
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+
+    if(localStorage.getItem("token")) {
+      this.isLoggedIn = true;
+    }
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Profil', component: ProfilPage },
       { title: 'List', component: ListPage },
       { title: 'Register', component: RegisterPage },
       { title: 'My Team', component: MyteamPage },
@@ -48,9 +57,47 @@ export class MyApp {
     });
   }
 
+  openProfil() {
+    this.nav.setRoot(ProfilPage);
+  }
+
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+
+
+  logout() {
+    this.authService.logout().then((result) => {
+      this.loading.dismiss();
+      let nav = this.app.getRootNav();
+      nav.setRoot(LoginPage);
+    }, (err) => {
+      this.loading.dismiss();
+      this.presentToast(err);
+    });
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: 'Authenticating...'
+    });
+
+    this.loading.present();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 }

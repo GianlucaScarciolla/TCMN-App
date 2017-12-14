@@ -26,4 +26,9 @@ page-teams {
     color: #fff;
   }
 
+  ion-card img {
+    min-height: 201px;
+    filter: brightness(50%);
+}
+
 }

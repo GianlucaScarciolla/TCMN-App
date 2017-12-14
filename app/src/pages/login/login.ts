@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { RegisterPage } from '../register/register';
 
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html'
+  selector: 'page-login',
+  templateUrl: 'login.html'
 })
-export class RegisterPage {
+export class LoginPage {
 
   loading: any;
-  regData = { username:'', password:'' };
+  loginData = { username:'', password:'' };
+  data: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
+  constructor(public navCtrl: NavController, public authService: AuthService, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
 
-  doSignup() {
+  doLogin() {
     this.showLoader();
-    this.authService.register(this.regData).then((result) => {
+    this.authService.login(this.loginData).then((result) => {
       this.loading.dismiss();
-      this.navCtrl.pop();
+      this.data = result;
+      localStorage.setItem('token', this.data.access_token);
+      this.navCtrl.setRoot(HomePage);
     }, (err) => {
       this.loading.dismiss();
       this.presentToast(err);
     });
+  }
+
+  register() {
+    this.navCtrl.push(RegisterPage);
   }
 
   showLoader(){
