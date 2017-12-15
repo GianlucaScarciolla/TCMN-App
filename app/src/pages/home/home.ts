@@ -9,7 +9,7 @@ import { LoginPage } from '../login/login';
 export class HomePage {
 
 
-  constructor(public app: App, public navCtrl: NavController) {
+  constructor(public navCtrl: NavController) {
 
 
 }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-login',
@@ -13,7 +14,7 @@ export class LoginPage {
   loginData = { username:'', password:'' };
   data: any;
 
-  constructor(public navCtrl: NavController, public authService: AuthService, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
+  constructor(public navCtrl: NavController, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {}
 
   doLogin() {
     this.showLoader();

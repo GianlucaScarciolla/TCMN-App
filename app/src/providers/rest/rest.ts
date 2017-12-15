@@ -24,6 +24,7 @@ export class RestProvider {
   getTeams() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/team' + '?transform=1&filter=active,eq,1').subscribe(data => {
+        console.log(data.team);
         resolve(data.team);
       }, err => {
         console.log(err);
