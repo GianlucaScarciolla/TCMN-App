@@ -9,9 +9,9 @@ import { MeetsPage } from '../pages/meets/meets';
 import { MyteamPage } from '../pages/myteam/myteam';
 import { NewsPage } from '../pages/news/news';
 import { TeamsPage } from '../pages/teams/teams';
-import { ListPage } from '../pages/list/list';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
+import { TeamdetailPage } from '../pages/teamdetail/teamdetail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +25,6 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     MeetsPage,
     ProfilPage,
     NewsPage,
@@ -33,6 +32,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     MyteamPage,
     RegisterPage,
     LoginPage,
+    TeamdetailPage,
   ],
   imports: [
     BrowserModule,
@@ -43,13 +43,13 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     RegisterPage,
     MeetsPage,
     ProfilPage,
     NewsPage,
     TeamsPage,
     MyteamPage,
+    TeamdetailPage,
   ],
   providers: [
     StatusBar,

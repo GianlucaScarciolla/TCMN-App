@@ -8,8 +8,8 @@
   </ion-navbar>
   <ion-item>
     <ion-label>Country</ion-label>
-    <ion-select [(ngModel)]="country">
-      <ion-option value='All'>All</ion-option>
+    <ion-select [(ngModel)]="country" (ngModelChange)="Countryfilter()">
+      <ion-option value='All' selected>All</ion-option>
       <ion-option *ngFor="let team of teams" value={{team.Country}}>{{team.Country}}</ion-option>
     </ion-select>
   </ion-item>
@@ -18,8 +18,7 @@
 
 
 <ion-content padding class="card-background-page">
-
-  <ion-card *ngFor="let team of teams">
+  <ion-card *ngFor="let team of teams" (click)="teamdetail(team.Team_ID)">
     <img src={{team.timg}} />
     <div class="card-title">{{team.TName}}</div>
     <div class="card-subtitle">{{team.Country}}</div>

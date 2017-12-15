@@ -21,10 +21,34 @@ export class RestProvider {
   }
 
 
-  getTeams() {
+  getTeams(country) {
+
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/team' + '?transform=1&filter=active,eq,1').subscribe(data => {
+      if (country === undefined) {
+        country = 'All';
+      }
+      
+      var string = '';
+      if (country !== 'All') {
+        string = '&filter=Country,eq,' + country;
+      }
+      console.log(string);
+      console.log(country);
+
+      this.http.get(this.apiUrl + '/team' + '?transform=1&filter=active,eq,1' + string).subscribe(data => {
         console.log(data.team);
+        resolve(data.team);
+      }, err => {
+        console.log(err);
+      });
+    });
+
+  }
+
+
+  getTeamDetail(id) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/team' + '?transform=1&filter=active,eq,1' + '&filter=Team_ID,eq,' + id).subscribe(data => {
         resolve(data.team);
       }, err => {
         console.log(err);
